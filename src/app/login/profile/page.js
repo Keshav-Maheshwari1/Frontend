@@ -22,7 +22,7 @@ export default function ProfilePage() {
   const sections = {
     "Profile Photo": useRef(null),
     "User Details": useRef(null),
-    Settings: useRef(null),
+    "Settings": useRef(null),
     "Create Store": useRef(null),
     "Medicine Inventory": useRef(null),
     "Order History": useRef(null),
