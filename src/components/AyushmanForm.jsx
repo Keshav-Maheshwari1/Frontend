@@ -25,35 +25,35 @@ const AyushmanForm = () => {
         <h2 className="text-2xl font-bold text-green-700 text-center">Ayushman Bharat Check</h2>
 
         <div>
-          <label className="block mb-1 text-gray-700">Location</label>
+          <label className="block mb-1 text-black">Location</label>
           <input
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
-            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="w-full p-2 border border-gray-300 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-green-400"
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-gray-700">Annual Income (₹)</label>
+          <label className="block mb-1 text-black">Annual Income (₹)</label>
           <input
             type="number"
             value={income}
             onChange={(e) => setIncome(e.target.value === "" ? "" : Number(e.target.value))}
             required
-            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="w-full p-2 border border-gray-300 text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-gray-700">Family Size</label>
+          <label className="block mb-1 text-black">Family Size</label>
           <input
             type="number"
             value={familySize}
             onChange={(e) => setFamilySize(e.target.value === "" ? "" : Number(e.target.value))}
             required
-            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="w-full p-2 border border-gray-300 text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400"
           />
         </div>
 
