@@ -13,8 +13,6 @@ export default function UserDetails({ user: initialUser }) {
 
   const handleSave = () => {
     setIsEditing(false);
-    // Here you would typically send the updated user data to an API or state management
-    console.log("Saved user data:", user);
   };
 
   const handleChange = (e) => {
