@@ -120,4 +120,37 @@ export const upiTransactions = [
   { id: 1, to: "Apollo Hospital", amount: "₹500" },
   { id: 2, to: "Medico Pharmacy", amount: "₹200" },
   { id: 3, to: "City Clinic", amount: "₹350" },
-]
+];
+
+export const userData = {
+  name: "Keshav Maheshwari",
+  email: "xyz@gmail.com",
+  aadhaar: "",
+  income: "",
+  address: "",
+  language: "English",
+};
+
+export const orders = [
+  {
+    id: 1,
+    medicine: "Paracetamol",
+    quantity: 10,
+    date: "2025-04-10",
+    total: "₹100",
+  },
+  {
+    id: 2,
+    medicine: "Ibuprofen",
+    quantity: 5,
+    date: "2025-04-15",
+    total: "₹75",
+  },
+];
+
+export const medicines = [
+  { id: 1, name: "Paracetamol", price: "₹10", stock: 50 },
+  { id: 2, name: "Ibuprofen", price: "₹15", stock: 30 },
+];
+
+export const languages = ["English", "Hindi"];
