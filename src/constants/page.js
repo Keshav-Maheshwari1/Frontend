@@ -115,3 +115,9 @@ export const mockStores = [
     price: "₹10",
   },
 ];
+
+export const upiTransactions = [
+  { id: 1, to: "Apollo Hospital", amount: "₹500" },
+  { id: 2, to: "Medico Pharmacy", amount: "₹200" },
+  { id: 3, to: "City Clinic", amount: "₹350" },
+]
