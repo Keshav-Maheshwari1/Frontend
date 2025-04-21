@@ -12,8 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
-import { schemes } from "@/constants/page"; // array of schemes
-import { filters } from "@/constants/page"; // filters like state, caste, etc.
+import { schemes, filters } from "@/constants/page"; // array of schemes// filters like state, caste, etc.
 import { useState } from "react";
 
 const ImageURI =
