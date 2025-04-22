@@ -1,12 +1,49 @@
 export const schemes = [
   {
+    id: 1,
     title: "Asangathit Karmakar Gambhir Bimari Chikitsa Sahayata Yojana",
     location: "Chhattisgarh",
     description:
       'Chhattisgarh State Government started a scheme "Asangathit Karmakar Gambhir Bimari Chikitsa Sahayata Yojana" for unorganized workers on 28 April 2012.',
     tags: ["Financial Assistance", "Medical Treatment", "Serious Illness"],
+    application: {
+      unregistered: [
+        "All the applicant have to visit the official website Chhattisgarh Labour Department.",
+        "On the home page click on 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'.",
+        "Enter the following details: 1. Select Group Name: 'Asangathit Marmakaar Mandal', 2. Select Service: 'Asangathit Shramik Panjikaran', 3. What do you want to do: 'Aavedan', 4. Click next.",
+        "Check the eligibility criteria for registration in Chhattisgarh Unorganized Workers State Social Security Board and click next.",
+        "Fill out the online 'Registration form'.",
+        "Submit.",
+      ],
+      registered: [
+        "All the applicant have to visit the official website Chhattisgarh Labour Department.",
+        "On the home page click on 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'.",
+        "Enter the following details: 1. Select Group Name: 'Asangathit Marmakaar Mandal', 2. Select Service: 'Yojana', 3. What do you want to do: 'Aavedan', 4. Click next.",
+        "Select your district name and provide old/new registration number and click next.",
+        "Select the scheme name.",
+        "Click next.",
+      ],
+    },
+    documents: [
+      "Aadhaar Card.",
+      "Registration Card.",
+      "Disease details by Vikas khand Adhikari / Surgeon / Chief medical officer/ Heath Officer.",
+      "A approximate expenses details by related Medical officer.",
+    ],
+    faq: [
+      "What is this scheme?",
+      "What is the objective of the scheme?",
+      "What are the benefits?",
+      "Who can get the benefits?",
+      "What is the required age to get the benefits?",
+      "How long must a applicant be registered with the State Board before I am eligible for the scheme?",
+      "What is the procedure to apply for the scheme?",
+      "How can applicant register under Chhattisgarh Unorganized Workers State Social Security Board?",
+      "How to apply for the scheme?",
+    ],
   },
   {
+    id: 2,
     title: "Distress Relief Fund For The Differently Abled (Medical Treatment)",
     location: "Kerala",
     description:
@@ -22,13 +59,92 @@ export const schemes = [
     ],
   },
   {
+    id: 3,
     title: "Atal Mission For Rejuvenation And Urban Transformation",
     location: "Ministry Of Housing & Urban Affairs",
     description:
       "Providing basic services (e.g. water supply, sewerage, urban transport) to households and building amenities in cities which will improve the quality of life for all, especially the poor and the disadvantaged is a national priority.",
     tags: ["Urban", "Infrastructure", "Water Supply", "Affordable Housing"],
   },
+  {
+    id: 4,
+    title: "Assam Arogya Nidhi Scheme",
+    location: "Assam",
+    description:
+      "The scheme “Assam Arogya Nidhi Scheme” is a yearly Financial Assistance Scheme provided as reimbursement to members of families whose yearly income is less than ₹5.00 lakhs for treatment of serious diseases including accident cases.",
+    tags: [
+      "Accidental Case",
+      "Diseases",
+      "Financial Assistance",
+      "Hospital",
+      "Treatment",
+    ],
+  },
+  {
+    id: 5,
+    title:
+      "Theka Shramik Evan Hamaal Shramik Baahy Rogi Chikitsa Sahaayata Yojana",
+    location: "Chhattisgarh",
+    description:
+      'Chhattisgarh State Government started a scheme "Theka Shramik Evan Hamaal Shramik Baahy Rogi Chikitsa Sahaayata Yojana" for unorganized worker on 11 March 2015.',
+    tags: ["Financial Assistance", "Health", "Treatment"],
+  },
+  {
+    id: 6,
+    title: "Swachh Bharat Mission – Urban 2.0",
+    location: "Ministry Of Housing & Urban Affairs",
+    description:
+      "A sanitation scheme for the construction of Individual Household Latrines (IHHL) for urban households.",
+    tags: ["Sanitation", "Toilet"],
+  },
+  {
+    id: 7,
+    title:
+      "Grant of Financial Assistance to Poor Scheduled Caste Pregnant & Lactating Women",
+    location: "Puducherry",
+    description:
+      "The scheme “Grant of Financial Assistance to Poor Scheduled Caste Pregnant & Lactating Women” was introduced by the Adi Dravidar Welfare Department, Government of Puducherry. The objective of the scheme is to provide assistance for the well-being of Pregnant and Lactating mothers and their children.",
+    tags: [
+      "Child",
+      "Financial Assistance",
+      "Hospital",
+      "Infant",
+      "Pregnant",
+      "Scheduled Caste",
+      "Woman",
+    ],
+  },
+  {
+    id: 8,
+    title: "Thayi Bhagya Scheme (comprehensive Maternal Healthcare)",
+    location: "Karnataka",
+    description:
+      "The Thayi Bhagya Scheme, started by Karnataka Government (Health and Family Welfare) for pregnant women, provides free delivery services, medicines, and all other facilities from the point of admission to discharge for pregnant women belonging to BPL families, in registered private hospitals.",
+    tags: [],
+  },
+  {
+    id: 9,
+    title: "Aswasakiranam",
+    location: "Kerala",
+    description:
+      "Aswasakiranam Scheme envisages assisting the caregivers of physically and mentally disabled bedridden patients, who are their family members or relatives. All those who have been providing caregiving service to patients since 02/08/10 will be paid monthly assistance with retrospective effect.",
+    tags: [
+      "Financial Assistance",
+      "Mentally Disabled",
+      "Money Assistance",
+      "Physically Disabled",
+    ],
+  },
+  {
+    id: 10,
+    title: "Nirmaan Shramik Mrtyu Evan Divyaang Sahaayata Yojana",
+    location: "Chhattisgarh",
+    description:
+      'Chhattisgarh State Government started "Nirmaan Shramik Mrtyu Evan Divyaang Sahaayata Yojana" for Building and other construction workers.',
+    tags: ["Death Benefits", "Disability Benefits", "Financial Assistance"],
+  },
 ];
+
 export const filters = [
   {
     key: "state",

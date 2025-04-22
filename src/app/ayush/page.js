@@ -1,8 +1,7 @@
 import SchemeExplorer from '@/components/SchemaExplorer'
-import StoreLocator from '@/components/StoreLocator'
 
 
-const page = () => {
+const page = async () => {
   return (
     <div>
       <SchemeExplorer/>
