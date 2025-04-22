@@ -19,9 +19,8 @@ export default function MedicineCard({ med, onBuy }) {
         <p className="text-gray-600 text-sm line-clamp-2">
           {med.purpose || "No description"}
         </p>
-        <p className="text-lg font-bold text-[#20B486] mt-2">
-          {med.price || "N/A"}
-        </p>
+        ₹{med.price || "N/A"}
+        <p className="text-lg font-bold text-[#20B486] mt-2"></p>
       </div>
       <Button
         className="mt-4 w-fit bg-[#20B486] hover:bg-[#1a8e6a] text-white"
