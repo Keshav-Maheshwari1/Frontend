@@ -6,8 +6,6 @@ import MedicineCard from "@/components/store/MedicineCard";
 import { fetchGenericEquivalents } from "@/utils/generic";
 
 const StorePage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
   const [filter, setFilter] = useState({
     name: "",
     showGenerics: true,
@@ -43,20 +41,9 @@ const StorePage = () => {
   });
 
   const allItems = [...filteredMedicines, ...generics];
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = allItems.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(allItems.length / itemsPerPage);
-
-  const handlePageChange = (page) => {
-    if (page > 0 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
 
   const handleBuy = (item) => {
-    console.log("Buying:", item.name || item.brand);
+    console.log("Buying:", item);
     // Add e-commerce logic here (e.g., add to cart)
   };
 

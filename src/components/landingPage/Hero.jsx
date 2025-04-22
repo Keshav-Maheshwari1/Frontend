@@ -26,7 +26,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-[#20B486] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1ca275] transition-all duration-300 w-fit" onClick={handleSchemeClick}>
+          <button className="bg-[#20B486] cursor-pointer text-white px-6 py-3 rounded-md font-medium hover:bg-[#1ca275] transition-all duration-300 w-fit" onClick={handleSchemeClick}>
             Explore All Schemes
           </button>
         </div>
