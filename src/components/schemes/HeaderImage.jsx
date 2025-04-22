@@ -5,7 +5,7 @@ const ImageURI = "https://www.myscheme.gov.in/_next/image?url=https%3A%2F%2Fcdn.
 export default function HeaderImage() {
   return (
     <div className="mt-4 mb-4">
-      <img src={ImageURI} alt="" />
+      <img src={ImageURI} className="" alt="" />
     </div>
   );
 }

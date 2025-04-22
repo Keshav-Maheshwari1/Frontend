@@ -14,7 +14,7 @@ export default function SchemeExplorer() {
   const filteredSchemes = schemes
     .filter((scheme) =>
       Object.entries(selectedFilters).every(([key, value]) => {
-        if (!value || value.length === 0) return true;
+        if (!value || value.length === 0 || Array.isArray(value)) return true;
         const checks = {
           state: () => value.includes(scheme.location),
           gender: () => value.some((v) => scheme.description.includes(v)),

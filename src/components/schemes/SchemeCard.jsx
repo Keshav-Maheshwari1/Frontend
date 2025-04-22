@@ -7,7 +7,7 @@ export default function SchemeCard({ scheme }) {
   const router = useRouter();
   const handleClick = () => {
     
-    router.push(`/ayush/scheme/${scheme.id}`);
+    router.push(`scheme/${scheme.id}`);
   };
   return (
     <Card key={scheme.title} className="shadow-md cursor-pointer"onClick={handleClick}>
