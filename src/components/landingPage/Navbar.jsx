@@ -38,7 +38,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="hidden md:flex" onClick={handleLoginClick}>
+        <div className="hidden md:flex cursor-pointer" onClick={handleLoginClick}>
           <button className="flex justify-between items-center  bg-transparent  px-6 gap-2">
             <Image src={lock} alt="loca" />
             Login
@@ -69,7 +69,7 @@ const Navbar = () => {
 
           <li className="p-4 hover:bg-gray-100">Store</li>
 
-          <div className="flex flex-col my-4 gap-4">
+          <div className="flex flex-col my-4 gap-4 cursor-pointer" onClick={handleLoginClick}>
             <button className="border border-[20B486] flex justify-center items-center  bg-transparent  px-6 gap-2 py-4">
               <Image src={lock} alt="loca" />
               Login
