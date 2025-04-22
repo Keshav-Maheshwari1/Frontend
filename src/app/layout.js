@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/landingPage/Navbar";
 import Chatbot from "@/components/Chatbot";
+import ReactQueryClientProvider from "@/wrappers/ReactQuery";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Chatbot />
+        <ReactQueryClientProvider>
+          <Navbar />
+          {children}
+          <Chatbot />
+        </ReactQueryClientProvider>
+
       </body>
     </html>
   );
