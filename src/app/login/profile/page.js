@@ -2,17 +2,10 @@
 import ProfilePhoto from "@/components/ProfilePhoto.jsx";
 import UserDetails from "@/components/UserDetails.jsx";
 import Settings from "@/components/Settings.jsx";
-import ChatbotButton from "@/components/ChatbotButton.jsx";
-import CreateStoreForm from "@/components/CreateStoreForm.jsx";
 import OrderHistory from "@/components/OrderHistory.jsx";
 import MedicineInventory from "@/components/MedicineInventory.jsx";
 import { useState, useRef, useEffect } from "react";
-import {
-  userData,
-  orders,
-  medicines,
-  languages,
-} from "@/constants/page";
+import { userData, orders, medicines, languages } from "@/constants/page";
 
 export default function ProfilePage() {
   const [language, setLanguage] = useState(userData.language);
@@ -24,19 +17,11 @@ export default function ProfilePage() {
   const sections = {
     "Profile Photo": useRef(null),
     "User Details": useRef(null),
-    "Settings": useRef(null),
-    "Create Store": useRef(null),
+    Settings: useRef(null),
   };
 
   const handlePhotoUpload = (type) => {
     alert(`Uploading ${type} photo!`);
-  };
-
-  const handleStoreCreated = (store) => {
-    setHasStore(true);
-    alert(
-      `Store "${store.name}" created with ${store.medicines.length} medicine(s)!`
-    );
   };
 
   useEffect(() => {
@@ -78,7 +63,9 @@ export default function ProfilePage() {
                   : "text-gray-600 hover:bg-gray-100"
               }`}
               onClick={() =>
-                sections[section].current?.scrollIntoView({ behavior: "smooth" })
+                sections[section].current?.scrollIntoView({
+                  behavior: "smooth",
+                })
               }
             >
               {section}
@@ -108,20 +95,18 @@ export default function ProfilePage() {
               languages={languages}
             />
           </div>
-          <div ref={sections["Create Store"]}>
+          {/* <div ref={sections["Create Store"]}>
             {!hasStore && (
               <CreateStoreForm onStoreCreated={handleStoreCreated} />
             )}
-          </div>
+          </div> */}
 
           {/* Toggle Buttons for Store Owner */}
           {hasStore && (
             <div className="space-x-4 flex justify-center">
               <button
                 className={`px-4 py-2 rounded-full text-white font-semibold shadow-md ${
-                  showInventory
-                    ? "bg-[#20B486]"
-                    : "bg-gray-300 text-gray-700"
+                  showInventory ? "bg-[#20B486]" : "bg-gray-300 text-gray-700"
                 }`}
                 onClick={() => setShowInventory(!showInventory)}
               >
