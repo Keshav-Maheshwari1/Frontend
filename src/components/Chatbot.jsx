@@ -1,13 +1,7 @@
-"use client"
+"use client";
 import React, { useState, useRef, useEffect } from "react";
 import { FaComments, FaTimes } from "react-icons/fa";
-
-const responses = {
-  hello: "Hi there! How can I help you today?",
-  help: "Sure! What do you need help with?",
-  bye: "Goodbye! Have a great day!",
-  default: "Sorry, I didn't understand that.",
-};
+import { useChat } from "@/costomeHooks/useChat"; // your custom hook using React Query
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,14 +11,37 @@ const Chatbot = () => {
 
   const toggleChat = () => setIsOpen(!isOpen);
 
+  const { mutate, isPending, isError, error } = useChat();
+
   const handleSend = () => {
     if (!input.trim()) return;
-    const userMessage = { sender: "user", text: input };
-    const lower = input.toLowerCase();
-    const botText = responses[lower] || responses.default;
-    const botMessage = { sender: "bot", text: botText };
 
-    setMessages((prev) => [...prev, userMessage, botMessage]);
+    const userMessage = { sender: "user", text: input };
+
+    // Immediately add user message
+    setMessages((prev) => [...prev, userMessage]);
+
+    // Call API
+    mutate(
+      {
+        input: input.trim(),
+        messages: messages.map((msg) => ({
+          sender: msg.sender,
+          text: msg.text,
+        })),
+      },
+      {
+        onSuccess: (res) => {
+          const botMessage = { sender: "bot", text: res?.answer || "No response" };
+          setMessages((prev) => [...prev, botMessage]);
+        },
+        onError: (err) => {
+          const botError = { sender: "bot", text: "Something went wrong!" };
+          setMessages((prev) => [...prev, botError]);
+        },
+      }
+    );
+
     setInput("");
   };
 
@@ -46,7 +63,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-6 w-80 h-96 bg-white shadow-xl rounded-lg overflow-hidden flex flex-col z-40">
+        <div className="fixed bottom-20 right-6 w-[400px] h-[650px] bg-white shadow-xl rounded-lg overflow-hidden flex flex-col z-40">
           <div className="bg-green-500 text-white p-4 font-bold">
             Chat with us
           </div>
@@ -54,7 +71,7 @@ const Chatbot = () => {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`p-2 rounded-lg text-sm max-w-[75%] ${
+                className={`p-2 rounded-lg text-sm w-fit  max-w-[75%] ${
                   msg.sender === "user"
                     ? "bg-gray-200 self-end ml-auto"
                     : "bg-green-100 self-start mr-auto"
@@ -76,9 +93,10 @@ const Chatbot = () => {
             />
             <button
               onClick={handleSend}
+              disabled={isPending}
               className="bg-green-500 text-white px-4"
             >
-              Send
+              {isPending ? "..." : "Send"}
             </button>
           </div>
         </div>
