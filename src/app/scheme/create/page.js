@@ -27,10 +27,19 @@ export default function SchemeForm({ userId, initialData = {} }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = { ...formData, userId };
-    createScheme(payload, {
-      onSuccess: () => router.push("/schemes"),
-      onError: (err) => alert(err.message),
-    });
+    createScheme(
+
+        payload , 
+      {
+        onSuccess: (res) => {
+            router.push('/scheme')
+            console.log(res)
+        },
+        onError: (err) => {
+           console.log(err)
+        },
+      }
+    );
   };
 
   return (

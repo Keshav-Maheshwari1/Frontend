@@ -1,5 +1,6 @@
 // schemeApis.js
-const BASE_URL = "http://13.235.234.229:7000/api/v1/scheme";
+// const BASE_URL = "http://13.235.234.229:7000/api/v1/scheme";
+const BASE_URL = 'http://localhost:9000/api/v1/scheme'
 
 export const createScheme = async (schemeData) => {
   const res = await fetch(`${BASE_URL}/create`, {
@@ -14,9 +15,10 @@ export const createScheme = async (schemeData) => {
   if (!res.ok) {
     throw new Error("Failed to create scheme");
   }
-
-  return res.json();
+  const data = await res.json();
+  return data;
 };
+
 
 export const updateScheme = async (schemeData) => {
   const res = await fetch(`${BASE_URL}/update`, {
@@ -32,7 +34,7 @@ export const updateScheme = async (schemeData) => {
     throw new Error("Failed to update scheme");
   }
 
-  return res.json();
+  return await  res.json();
 };
 
 export const getSchemeById = async (id) => {
