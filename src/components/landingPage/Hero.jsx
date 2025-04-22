@@ -1,8 +1,16 @@
+"use client"
 import { heroImg } from "@/assets";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 import React from "react";
 
 
 const Hero = () => {
+  const router = useRouter()
+  const handleSchemeClick = ()=>{
+    router.push('/scheme')
+  }
   return (
     <div className="w-full bg-white py-24">
       <div className="max-w-[1480px] mx-auto grid md:grid-cols-2 items-center px-4 md:px-0 gap-8">
@@ -18,14 +26,14 @@ const Hero = () => {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-[#20B486] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1ca275] transition-all duration-300 w-fit">
+          <button className="bg-[#20B486] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1ca275] transition-all duration-300 w-fit" onClick={handleSchemeClick}>
             Explore All Schemes
           </button>
         </div>
 
         {/* Right Section (Image) */}
         <div className="flex justify-center">
-          <img
+          <Image
             src={heroImg}
             alt="Hero"
             className="w-full max-w-[600px] h-auto"

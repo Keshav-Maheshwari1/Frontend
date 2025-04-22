@@ -1,5 +1,8 @@
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import Feedback from "@/components/landingPage/Feedback";
+import Hero from "@/components/landingPage/Hero";
+import Navbar from "@/components/landingPage/Navbar";
+import Schemes from "@/components/landingPage/Schemes";
+
 
 async function wait(ms) {
   return new Promise((res) => setTimeout(res, ms));
@@ -10,6 +13,9 @@ export default async function Home() {
     <main className="">
       <Navbar/>
       <Hero/>
+      <Schemes/>
+      <Feedback/>
+      
     </main>
   );
 }
