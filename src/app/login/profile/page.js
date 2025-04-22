@@ -16,7 +16,7 @@ import {
 
 export default function ProfilePage() {
   const [language, setLanguage] = useState(userData.language);
-  const [hasStore, setHasStore] = useState(false);
+  const [hasStore, setHasStore] = useState(true);
   const [activeSection, setActiveSection] = useState("Profile Photo");
   const [showInventory, setShowInventory] = useState(false);
   const [showOrderHistory, setShowOrderHistory] = useState(false);
