@@ -5,30 +5,40 @@ export default function OrderHistory({ orders }) {
   return (
     <Card className="mt-6 shadow-md hover:shadow-lg transition-shadow">
       <CardHeader>
-        <CardTitle className="text-xl text-indigo-700">Order History</CardTitle>
+        <CardTitle className="text-xl text-[#20B486]">
+          Order History
+        </CardTitle>
       </CardHeader>
       <CardContent>
         {orders.length > 0 ? (
-          <ul className="space-y-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {orders.map((order) => (
-              <li key={order.id} className="border-b py-2">
-                <p>
-                  <strong>Medicine:</strong> {order.medicine}
-                </p>
-                <p>
+              <div
+                key={order.id}
+                className="border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow bg-white"
+              >
+                <img
+                  src={order.image || "https://placehold.co/300x200/ffffff/000000?text=Order"}
+                  alt={order.medicine}
+                  className="w-full h-40 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                  {order.medicine}
+                </h3>
+                <p className="text-sm text-gray-600">
                   <strong>Quantity:</strong> {order.quantity}
                 </p>
-                <p>
+                <p className="text-sm text-gray-600">
                   <strong>Date:</strong> {order.date}
                 </p>
-                <p>
-                  <strong>Total:</strong> {order.total}
+                <p className="text-sm text-gray-600">
+                  <strong>Total:</strong> ₹{order.total}
                 </p>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
-          <p>No orders yet.</p>
+          <p className="text-gray-600">No orders yet.</p>
         )}
       </CardContent>
     </Card>

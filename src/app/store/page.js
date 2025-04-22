@@ -8,11 +8,12 @@ import { fetchGenericEquivalents } from "@/utils/generic";
 const StorePage = () => {
   const [filter, setFilter] = useState({
     name: "",
+    showGenerics: true,
   });
   const [generics, setGenerics] = useState([]);
 
   const fetchGenerics = async (name) => {
-    if (name) {
+    if (name && filter.showGenerics) {
       const data = await fetchGenericEquivalents(name);
       const normalizedGenerics = data.map((item) => ({
         name: item.name,
@@ -26,6 +27,11 @@ const StorePage = () => {
       setGenerics([]);
     }
   };
+
+  useEffect(() => {
+    fetchGenerics(filter.name);
+    setCurrentPage(1);
+  }, [filter.name, filter.showGenerics]);
 
   const filteredMedicines = medicines.filter((med) => {
     const nameMatch =
@@ -45,15 +51,47 @@ const StorePage = () => {
     <div className="flex flex-col md:flex-row gap-8">
       <SidebarFilter
         filter={filter}
-        setFilter={setFilter}
-        onSearch={fetchGenerics}
-        generics={generics}
+        setFilter={(updatedFilter) => {
+          setFilter((prev) => ({ ...prev, ...updatedFilter }));
+          if (updatedFilter.name !== undefined) {
+            fetchGenerics(updatedFilter.name);
+          }
+        }}
       />
       <div className="flex-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {allItems.map((item, index) => (
+          {currentItems.map((item, index) => (
             <MedicineCard key={index} med={item} onBuy={handleBuy} />
           ))}
+        </div>
+        <div className="flex justify-center mt-8 space-x-2">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-[#20B486] text-white rounded-lg hover:bg-[#1a8e6a] disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={`px-4 py-2 rounded-lg ${
+                currentPage === page
+                  ? "bg-[#20B486] text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-[#20B486] text-white rounded-lg hover:bg-[#1a8e6a] disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
