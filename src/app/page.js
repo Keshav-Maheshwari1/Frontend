@@ -1,6 +1,6 @@
 import Feedback from "@/components/landingPage/Feedback";
 import Hero from "@/components/landingPage/Hero";
-import Navbar from "@/components/landingPage/Navbar";
+
 import Schemes from "@/components/landingPage/Schemes";
 
 
@@ -11,7 +11,7 @@ export default async function Home() {
   await wait(3000);
   return (
     <main className="">
-      <Navbar/>
+     
       <Hero/>
       <Schemes/>
       <Feedback/>
