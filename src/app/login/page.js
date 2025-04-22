@@ -13,27 +13,21 @@ export default function page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
   };
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-50 to-white p-6">
       <div className="relative bg-white max-w-md w-full p-8 rounded-2xl shadow-xl space-y-6 transform transition-all hover:scale-105 hover:shadow-2xl">
-
         {/* Header */}
         <div className="text-center">
           <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">
-            {isForget
-              ? "Reset Password"
-              : isUser
-              ? "Welcome Back!"
-              : "Create an Account"}
+            {isUser ? "Welcome Back!" : "Create an Account"}
           </h1>
         </div>
 
         {/* Form */}
         <div className="space-y-5">
-          {!isUser && !isForget && (
+          {!isUser && (
             <InputField
               label="Name"
               type="text"
@@ -50,34 +44,22 @@ export default function page() {
             inputRef={emailInput}
             required
           />
-
-          {!isForget && (
-            <PasswordField
-              label="Password"
-              inputRef={passwordInput}
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-            />
-          )}
-
-          {isForget && (
-            <PasswordField
-              label="Confirm Password"
-              inputRef={confirmPasswordInput}
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-            />
-          )}
+          <PasswordField
+            label="Password"
+            inputRef={passwordInput}
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+          />
 
           <button
             type="submit"
             onClick={handleSubmit}
-            className="relative w-full py-3 bg-gradient-to-r from-[#E59622] to-[#d78010] text-white rounded-lg font-semibold hover:from-[#d78010] hover:to-[#c56f00] transition-all duration-300 overflow-hidden"
+            className="relative w-full py-2 bg-[#50af91] text-white rounded-lg font-semibold hover:bg-[#20B486] transition-all duration-300 overflow-hidden"
           >
             <span className="relative z-10">
-              {isForget ? "Reset Password" : isUser ? "Login" : "Register"}
+              {isUser ? "Login" : "Register"}
             </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-[#d78010] to-[#c56f00] opacity-0 hover:opacity-20 transition-opacity" />
+            <span className="absolute inset-0 bg-[#20B486] opacity-0 hover:opacity-20 transition-opacity" />
           </button>
         </div>
 
@@ -96,16 +78,6 @@ export default function page() {
             </span>
           </p>
         )}
-
-        <p
-          className="text-center text-sm text-gray-600 cursor-pointer hover:text-indigo-600 hover:underline"
-          onClick={() => {
-            setIsForget(!isForget);
-            setIsUser(true);
-          }}
-        >
-          {isForget ? "Back to Login" : "Forgot Password?"}
-        </p>
       </div>
     </main>
   );
