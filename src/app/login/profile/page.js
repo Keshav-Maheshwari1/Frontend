@@ -18,14 +18,14 @@ export default function ProfilePage() {
   const [language, setLanguage] = useState(userData.language);
   const [hasStore, setHasStore] = useState(false);
   const [activeSection, setActiveSection] = useState("Profile Photo");
+  const [showInventory, setShowInventory] = useState(false);
+  const [showOrderHistory, setShowOrderHistory] = useState(false);
 
   const sections = {
     "Profile Photo": useRef(null),
     "User Details": useRef(null),
     "Settings": useRef(null),
     "Create Store": useRef(null),
-    "Medicine Inventory": useRef(null),
-    "Order History": useRef(null),
   };
 
   const handlePhotoUpload = (type) => {
@@ -41,7 +41,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      const scrollPosition = window.scrollY + 100;
       let newActiveSection = activeSection;
 
       for (const [sectionName, ref] of Object.entries(sections)) {
@@ -65,22 +65,20 @@ export default function ProfilePage() {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-white p-4 relative">
+    <div className="min-h-screen bg-white p-4 relative">
       <div className="flex">
-        {/* Left Sidebar for Component Names */}
+        {/* Sidebar */}
         <div className="w-1/4 sticky top-4 h-[calc(100vh-2rem)] bg-white rounded-xl shadow-md p-4 space-y-4">
           {Object.keys(sections).map((section) => (
             <div
               key={section}
               className={`cursor-pointer p-2 rounded-lg transition-colors ${
                 activeSection === section
-                  ? "bg-gradient-to-r from-indigo-600 to-blue-500 text-white"
-                  : "text-gray-600 hover:bg-indigo-100"
+                  ? "bg-[#20B486] text-white"
+                  : "text-gray-600 hover:bg-gray-100"
               }`}
               onClick={() =>
-                sections[section].current?.scrollIntoView({
-                  behavior: "smooth",
-                })
+                sections[section].current?.scrollIntoView({ behavior: "smooth" })
               }
             >
               {section}
@@ -88,9 +86,9 @@ export default function ProfilePage() {
           ))}
         </div>
 
-        {/* Right Content Area */}
+        {/* Main Content */}
         <div className="w-3/4 ml-6 space-y-6">
-          <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 text-center">
+          <h1 className="text-3xl font-extrabold text-[#20B486] text-center">
             Profile Management
           </h1>
           <p className="text-center text-gray-600">
@@ -115,17 +113,38 @@ export default function ProfilePage() {
               <CreateStoreForm onStoreCreated={handleStoreCreated} />
             )}
           </div>
-          <div ref={sections["Medicine Inventory"]}>
-            <MedicineInventory medicines={medicines} />
-          </div>
-          <div ref={sections["Order History"]}>
-            <OrderHistory orders={orders} />
-          </div>
+
+          {/* Toggle Buttons for Store Owner */}
+          {hasStore && (
+            <div className="space-x-4 flex justify-center">
+              <button
+                className={`px-4 py-2 rounded-full text-white font-semibold shadow-md ${
+                  showInventory
+                    ? "bg-[#20B486]"
+                    : "bg-gray-300 text-gray-700"
+                }`}
+                onClick={() => setShowInventory(!showInventory)}
+              >
+                {showInventory ? "Hide" : "Show"} Inventory
+              </button>
+              <button
+                className={`px-4 py-2 rounded-full text-white font-semibold shadow-md ${
+                  showOrderHistory
+                    ? "bg-[#20B486]"
+                    : "bg-gray-300 text-gray-700"
+                }`}
+                onClick={() => setShowOrderHistory(!showOrderHistory)}
+              >
+                {showOrderHistory ? "Hide" : "Show"} Orders
+              </button>
+            </div>
+          )}
+
+          {/* Conditionally Rendered Sections */}
+          {showInventory && <MedicineInventory medicines={medicines} />}
+          {showOrderHistory && <OrderHistory orders={orders} />}
         </div>
       </div>
-
-      {/* Chatbot Button */}
-      <ChatbotButton />
     </div>
   );
 }
