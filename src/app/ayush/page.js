@@ -1,4 +1,5 @@
-import SchemeExplorer from '@/components/SchemaExplorer'
+import SchemeExplorer from "./scheme/page"
+
 
 
 const page = async () => {
