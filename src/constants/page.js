@@ -272,3 +272,10 @@ export const medicines = [
 ];
 
 export const languages = ["English", "Hindi"];
+
+
+export const STATES = [
+  "Maharashtra", "Gujarat", "Rajasthan", "Kerala", "Tamil Nadu",
+  "Karnataka", "Delhi", "Uttar Pradesh", "West Bengal",
+  "Telangana", "Andhra Pradesh"
+];

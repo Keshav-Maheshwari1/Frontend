@@ -1,29 +1,48 @@
 "use client";
-
 import FilterSidebar from "@/components/schemes/FilterSidebar";
 import HeaderImage from "@/components/schemes/HeaderImage";
 import SchemeList from "@/components/schemes/SchemeList";
 import SearchBar from "@/components/schemes/SearchBar";
-import { schemes, filters } from "@/constants/page";
+import { filters } from "@/constants/page";
+import { useGetAllSchemes } from "@/costomeHooks/useSchemes";
 import { useState } from "react";
 
 export default function SchemeExplorer() {
   const [search, setSearch] = useState("");
-  const [selectedFilters, setSelectedFilters] = useState({});
+  const [selectedFilters, setSelectedFilters] = useState({
+    state: "",
+    eligibility: "",
+    type: "",
+  });
+
+  const {
+    data: schemes,
+    isPending: loadingSchemes,
+    error: errorSchemes,
+  } = useGetAllSchemes();
+
+  if (loadingSchemes) return <div>Loading...</div>;
+  if (errorSchemes) return <div>{errorSchemes.message}</div>;
 
   const filteredSchemes = schemes
     .filter((scheme) =>
       Object.entries(selectedFilters).every(([key, value]) => {
-        if (!value || value.length === 0 || Array.isArray(value)) return true;
+        if (!value || value === "") return true;
+
+        const searchableText = `${scheme.eligibility || ""} ${
+          scheme.content || ""
+        }`.toLowerCase();
+
         const checks = {
-          state: () => value.includes(scheme.location),
-          gender: () => value.some((v) => scheme.description.includes(v)),
-          age: () => value.some((v) => scheme.description.includes(v)),
-          caste: () => value.some((v) => scheme.description.includes(v)),
-          ministry: () => value.some((v) => scheme.tags.includes(v)),
+          state: () => scheme.applicableState?.includes(value),
+          gender: () => searchableText.includes(value.toLowerCase()),
+          age: () => searchableText.includes(value.toLowerCase()),
+          caste: () => searchableText.includes(value.toLowerCase()),
+          ministry: () => searchableText.includes(value.toLowerCase()),
           disabilityPercentage: () =>
-            value.some((v) => scheme.description.includes(v)),
+            searchableText.includes(value.toLowerCase()),
         };
+
         return checks[key] ? checks[key]() : true;
       })
     )
