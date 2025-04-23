@@ -35,10 +35,10 @@ const Navbar = ({ isLoggedIn }) => {
               <Link href="/scheme">Schemes</Link>
             </li>
             <li>
-              <Link href="/store">Store</Link>
+              <Link href="/near">Aushadhi</Link>
             </li>
             <li>
-              <Link href="/near">Nearby Aushidhi</Link>
+              <Link href="/store">Store</Link>
             </li>
           </ul>
         </div>
