@@ -29,10 +29,10 @@ export default function StoreLocator() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">
+        <h1 className="text-3xl font-bold text-center text-green-600 mb-4">
           Find Jan Aushadhi Stores
         </h1>
-        <p className="text-center text-gray-600 mb-6">
+        <p className="text-center text-zinc-700 mb-6">
           Powering 30% of Jan Aushadhi usage: 150M users, ₹100B in savings
         </p>
 
@@ -40,7 +40,7 @@ export default function StoreLocator() {
         <div className="mb-6">
           <label
             htmlFor="location"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-green-800"
           >
             Enter Zip Code or City
           </label>
@@ -50,7 +50,7 @@ export default function StoreLocator() {
             value={location}
             onChange={handleInputChange}
             placeholder="e.g., 462040 or Bhopal"
-            className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
           />
         </div>
 
@@ -71,7 +71,7 @@ export default function StoreLocator() {
 
           {/* Store List */}
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-800">
+            <h2 className="text-xl font-semibold text-green-800">
               Nearby Stores
             </h2>
             {filteredStores.length > 0 ? (
@@ -81,18 +81,22 @@ export default function StoreLocator() {
                   className="p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                   onClick={() => handleStoreClick(store.pin)}
                 >
-                  <h3 className="text-lg font-medium text-blue-600">
+                  <h3 className="text-lg font-medium text-zinc-900">
                     {store.name}
                   </h3>
-                  <p className="text-gray-600">Distance: {store.distance} km</p>
-                  <p className="text-gray-600">
+                  <p className="text-zinc-900">
+                    Distance: {store.distance} km
+                  </p>
+                  <p className="text-zinc-900">
                     {store.medicine}:{" "}
-                    <span className="font-semibold">{store.price}</span>
+                    <span className="font-semibold text-green-800">
+                      {store.price}
+                    </span>
                   </p>
                 </div>
               ))
             ) : (
-              <p className="text-gray-500">No stores found for this PIN.</p>
+              <p className="text-green-600">No stores found for this PIN.</p>
             )}
           </div>
         </div>
