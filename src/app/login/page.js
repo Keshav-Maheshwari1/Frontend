@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useLogin, useSignup } from "@/costomeHooks/useAuth";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,10 @@ export default function AuthForm() {
   const { mutate: loginMutate, isPending: loginLoading, error: loginError } = useLogin();
   const { mutate: signupMutate, isPending: signupLoading, error: signupError } = useSignup();
 
+  useEffect(()=> {
+      console.log("asdfasdf")
+  } , [loginMutate , signupMutate  ])
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = emailInput.current?.value;
@@ -30,9 +34,8 @@ export default function AuthForm() {
       {
         onSuccess: (res) => {
           console.log(res)
-
           setAuthData(); 
-          router.push("/");
+           window.location.href='/'
         },
         onError: (err) => console.log(err),
       }

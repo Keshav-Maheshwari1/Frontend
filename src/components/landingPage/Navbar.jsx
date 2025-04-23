@@ -11,7 +11,7 @@ const Navbar = ({ isLoggedIn }) => {
   const [toggle, setToggle] = useState(false);
   const [photoURL, setPhotoURL] = useState("https://i.pravatar.cc/300");
   const router = useRouter();
-
+   console.log(isLoggedIn , "this is from navbar ")
   const handleClick = () => setToggle(!toggle);
 
  
@@ -20,8 +20,11 @@ const Navbar = ({ isLoggedIn }) => {
 
   const handleLogoutClick = () => {
      logout() ; 
-     window.location.href='/'
   };
+
+  useEffect(()=> {
+     console.log("")
+  }, [logout])
 
   return (
     <div className="w-full h-[80px] bg-white border-b">

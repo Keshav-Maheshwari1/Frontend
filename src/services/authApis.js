@@ -1,8 +1,8 @@
 // services/authService.js
 
 
-const BASE_URL = "http://13.235.234.229:7000/api/v1/auth";
-// const BASE_URL = 'http://localhost:9000/api/v1/auth'
+// const BASE_URL = "http://13.235.234.229:7000/api/v1/auth";
+const BASE_URL = 'http://localhost:9000/api/v1/auth'
 
 
 export const signup = async (userData) => {
@@ -45,7 +45,7 @@ export const logout = async () => {
 export const getCurrentUser = async () => {
   const response = await fetch(`${BASE_URL}/current`, {
     method: "GET",
-    credentials: true,
+    credentials: "include",
   });
   return await response.json();
 };

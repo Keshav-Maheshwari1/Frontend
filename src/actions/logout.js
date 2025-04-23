@@ -7,5 +7,5 @@ import { redirect } from "next/navigation";
 export async function logout() {
   cookies().delete("token");
   cookies().delete("photoURL");
-  redirect("/"); // Will redirect on the server side after logout
+  redirect("/"); 
 }
