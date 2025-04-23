@@ -93,11 +93,11 @@ const Navbar = ({ isLoggedIn }) => {
             <li className="p-4 hover:bg-gray-100">
               <Link href="/scheme">Schemes</Link>
             </li>
+            <li>
+              <Link href="/near">Aushadhi</Link>
+            </li>
             <li className="p-4 hover:bg-gray-100">
               <Link href="/store">Store</Link>
-            </li>
-            <li>
-              <Link href="/near">Nearby Aushidhi</Link>
             </li>
             {!isLoggedIn ? (
               <div className="flex flex-col my-4 gap-4">
