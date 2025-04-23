@@ -1,6 +1,6 @@
 // schemeApis.js
-// const BASE_URL = "http://13.235.234.229:7000/api/v1/scheme";
-const BASE_URL = 'http://localhost:9000/api/v1/scheme'
+const BASE_URL = "http://13.235.234.229:7000/api/v1/scheme";
+// const BASE_URL = 'http://localhost:9000/api/v1/scheme'
 
 export const createScheme = async (schemeData) => {
   const res = await fetch(`${BASE_URL}/create`, {
