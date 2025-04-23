@@ -1,6 +1,9 @@
 // services/authService.js
 
-const BASE_URL = "http://13.235.234.229:7000/api/v1/profile";
+
+// const BASE_URL = "http://13.235.234.229:7000/api/v1/auth";
+const BASE_URL = 'http://localhost:9000/api/v1/auth'
+
 
 export const signup = async (userData) => {
   const response = await fetch(`${BASE_URL}/signup`, {
@@ -23,13 +26,18 @@ export const login = async (credentials) => {
     body: JSON.stringify(credentials),
     credentials: "include",
   });
-  return await response.json();
+  const data = await response.json();
+  if (!response.ok) {
+    console.log(data)
+    throw new Error(data?.message || "Something went wrong in signin ")
+  }
+  return data;
 };
 
 export const logout = async () => {
   const response = await fetch(`${BASE_URL}/logout`, {
     method: "POST",
-    credentials: "include",
+    credentials: true,
   });
   return await response.json();
 };
@@ -37,7 +45,7 @@ export const logout = async () => {
 export const getCurrentUser = async () => {
   const response = await fetch(`${BASE_URL}/current`, {
     method: "GET",
-    credentials: "include",
+    credentials: true,
   });
   return await response.json();
 };

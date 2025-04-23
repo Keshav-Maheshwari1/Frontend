@@ -1,4 +1,5 @@
 const BASE_URL = 'http://13.235.234.229:7000/api/v1/medicine';
+// const BASE_URL = 'http://localhost:9000/api/v1/medicine'
 
 // Create a new medicine
 export const createMedicine = async (payload) => {
