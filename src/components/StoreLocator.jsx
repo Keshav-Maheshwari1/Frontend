@@ -81,7 +81,7 @@ export default function StoreLocator() {
                   className="p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                   onClick={() => handleStoreClick(store.pin)}
                 >
-                  <h3 className="text-lg font-medium text-zinc-900">
+                  <h3 className="text-lg font-medium text-green-900">
                     {store.name}
                   </h3>
                   <p className="text-zinc-900">
@@ -89,7 +89,7 @@ export default function StoreLocator() {
                   </p>
                   <p className="text-zinc-900">
                     {store.medicine}:{" "}
-                    <span className="font-semibold text-green-800">
+                    <span className="font-semibold text-zinc-800">
                       {store.price}
                     </span>
                   </p>
