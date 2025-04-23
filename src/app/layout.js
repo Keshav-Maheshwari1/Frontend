@@ -4,6 +4,7 @@ import Navbar from "@/components/landingPage/Navbar";
 import Chatbot from "@/components/Chatbot";
 import ReactQueryClientProvider from "@/wrappers/ReactQuery";
 import { AuthProvider } from "@/context/AuthContext";
+import Footer from "@/components/landingPage/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <Navbar />
             {children}
+            <Footer />
             <Chatbot />
           </AuthProvider>
         </ReactQueryClientProvider>
