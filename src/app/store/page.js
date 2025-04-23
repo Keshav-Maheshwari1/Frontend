@@ -3,18 +3,21 @@ import { useState } from "react";
 import SidebarFilter from "@/components/store/SidebarFilter";
 import MedicineCard from "@/components/store/MedicineCard";
 import { useGetAllMedicines } from "@/costomeHooks/useMedicine";
+import { usePayment } from "@/utils/usePayment";
+
 
 const StorePage = () => {
+  const { initiatePayment } = usePayment();
   const [filter, setFilter] = useState({
     name: "",
     showGenerics: true,
   });
+  const [loading, setLoading] = useState(false);
   const {
     data: medicines,
     isPending: loadingMedicine,
     error: errorMedicine,
   } = useGetAllMedicines();
-
 
   if (loadingMedicine) return <div>Loading...</div>;
   if (errorMedicine) return <div>{errorMedicine.message}</div>;
@@ -23,12 +26,19 @@ const StorePage = () => {
     (med) =>
       !filter.name || med.name.toLowerCase().includes(filter.name.toLowerCase())
   );
-  
 
   const allItems = filteredMedicines;
 
   const handleBuy = (item) => {
-    console.log("Buying:", item.name);
+    const formData = {
+      name: item.name,
+      email: "keshav029@gmail.com",
+      stock: item.stock,
+      phone: "9993312857",
+    };
+    const amount = item.price;
+    const getId = item._id;
+    initiatePayment({ formData, amount, getId, setLoading });
   };
 
   return (
