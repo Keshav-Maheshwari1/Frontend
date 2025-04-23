@@ -18,10 +18,12 @@ export default function StoreForm({ initialData }) {
     }
   );
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    router.push("/stores");
+    
   };
 
   return (

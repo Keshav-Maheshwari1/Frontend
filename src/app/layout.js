@@ -4,8 +4,6 @@ import Navbar from "@/components/landingPage/Navbar";
 import Chatbot from "@/components/Chatbot";
 import ReactQueryClientProvider from "@/wrappers/ReactQuery";
 import { AuthProvider } from "@/context/AuthContext";
-import { cookies } from 'next/headers';
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,11 +20,7 @@ export const metadata = {
 };
 
 // ✅ Make this async
-export default async function RootLayout({ children }) {
-  const token = cookies().get('token')?.value;
-
-  console.log(token, "this is from layout");
-
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
@@ -34,7 +28,7 @@ export default async function RootLayout({ children }) {
       >
         <ReactQueryClientProvider>
           <AuthProvider>
-            <Navbar isLoggedIn={!!token} />
+            <Navbar />
             {children}
             <Chatbot />
           </AuthProvider>
