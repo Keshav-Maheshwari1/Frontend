@@ -1,6 +1,7 @@
 "use client";
+import { mockStores } from "@/constants/mockStores";
 import { useState } from "react";
-import { mockStores } from "@/constants/page";
+
 
 export default function StoreLocator() {
   const [location, setLocation] = useState("");

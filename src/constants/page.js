@@ -191,48 +191,6 @@ export const filters = [
   },
 ];
 
-export const mockStores = [
-  {
-    id: 1,
-    name: "Jan Aushadhi Store - MP Nagar",
-    distance: 1.2,
-    pin: "462011",
-    medicine: "Paracetamol",
-    price: "₹10",
-  },
-  {
-    id: 2,
-    name: "Jan Aushadhi Store - Arera Colony",
-    distance: 2.5,
-    pin: "462016",
-    medicine: "Paracetamol",
-    price: "₹9",
-  },
-  {
-    id: 3,
-    name: "Jan Aushadhi Store - BHEL Area",
-    distance: 3.8,
-    pin: "462022",
-    medicine: "Paracetamol",
-    price: "₹11",
-  },
-  {
-    id: 4,
-    name: "Jan Aushadhi Store - New Market",
-    distance: 4.2,
-    pin: "462003",
-    medicine: "Paracetamol",
-    price: "₹10",
-  },
-  {
-    id: 5,
-    name: "Jan Aushadhi Store - Kolar Road",
-    distance: 5.6,
-    pin: "462042",
-    medicine: "Paracetamol",
-    price: "₹10",
-  },
-];
 
 export const upiTransactions = [
   { id: 1, to: "Apollo Hospital", amount: "₹500" },
